@@ -12,8 +12,8 @@ A robust Learning Management System (LMS) backend built with **Fastify**, **Type
     - [Implemented ✅](#implemented-)
     - [Planned 🚧](#planned-)
   - [🏗 Architecture](#-architecture)
+    - [System Overview](#system-overview)
     - [Layer Responsibilities](#layer-responsibilities)
-  - [📁 Project Structure](#-project-structure)
   - [🛠 Tech Stack](#-tech-stack)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
@@ -55,46 +55,44 @@ A robust Learning Management System (LMS) backend built with **Fastify**, **Type
 
 ## 🏗 Architecture
 
-This project follows a **modular, layered architecture** that separates concerns and promotes maintainability:
+This project follows a **modular, layered architecture** that separates concerns and promotes maintainability.
 
-┌─────────────────────────────────────────────────────────────────┐
-│ FASTIFY SERVER │
-├─────────────────────────────────────────────────────────────────┤
-│ Plugins (CORS, Helmet, Rate Limit, Error Handler) │
-├─────────────────────────────────────────────────────────────────┤
-│ Middlewares (Auth, Roles, Validation) │
-├─────────────────────────────────────────────────────────────────┤
-│ │
-│ ┌─────────────────────────────────────────────────────────┐ │
-│ │ MODULES │ │
-│ │ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐ │ │
-│ │ │ Users │ │ Courses │ │Payments │ │Invoices │ ... │ │
-│ │ └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘ │ │
-│ │ │ │ │ │ │ │
-│ │ ┌────▼───────────▼───────────▼───────────▼────┐ │ │
-│ │ │ CONTROLLERS │ │ │
-│ │ │ (Handle HTTP requests/responses) │ │ │
-│ │ └────────────────────┬────────────────────────┘ │ │
-│ │ │ │ │
-│ │ ┌────────────────────▼────────────────────────┐ │ │
-│ │ │ SERVICES │ │ │
-│ │ │ (Business logic, orchestration) │ │ │
-│ │ └────────────────────┬────────────────────────┘ │ │
-│ │ │ │ │
-│ │ ┌────────────────────▼────────────────────────┐ │ │
-│ │ │ REPOSITORIES │ │ │
-│ │ │ (Data access, Prisma queries) │ │ │
-│ │ └─────────────────────────────────────────────┘ │ │
-│ └─────────────────────────────────────────────────────────┘ │
-│ │
-├─────────────────────────────────────────────────────────────────┤
-│ INFRASTRUCTURE │
-│ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │
-│ │ Prisma │ │ Redis │ │ BullMQ │ │ Pino │ │
-│ │ (Postgres)│ │ (Cache) │ │ (Queues) │ │ (Logger) │ │
-│ └──────────┘ └──────────┘ └──────────┘ └──────────┘ │
-└─────────────────────────────────────────────────────────────────┘
+### System Overview
 
+```mermaid
+flowchart TB
+    subgraph Server["🖥️ FASTIFY SERVER"]
+        Plugins["Plugins\n(CORS, Helmet, Rate Limit)"]
+        Middlewares["Middlewares\n(Auth, Roles, Validation)"]
+    end
+
+    subgraph Modules["📦 MODULES"]
+        Users["Users"]
+        Courses["Courses"]
+        Payments["Payments"]
+        Invoices["Invoices"]
+        Enrollments["Enrollments"]
+    end
+
+    subgraph Layers["📐 LAYERS"]
+        Controllers["Controllers\n(HTTP Request/Response)"]
+        Services["Services\n(Business Logic)"]
+        Repositories["Repositories\n(Data Access)"]
+    end
+
+    subgraph Infra["⚙️ INFRASTRUCTURE"]
+        Prisma["Prisma\n(PostgreSQL)"]
+        Redis["Redis\n(Cache)"]
+        BullMQ["BullMQ\n(Queues)"]
+        Pino["Pino\n(Logger)"]
+    end
+
+    Server --> Modules
+    Modules --> Layers
+    Controllers --> Services
+    Services --> Repositories
+    Repositories --> Infra
+```
 
 ### Layer Responsibilities
 
@@ -107,6 +105,7 @@ This project follows a **modular, layered architecture** that separates concerns
 
 ---
 
+```markdown
 ## 📁 Project Structure
 
 LMS-backend/
@@ -169,7 +168,7 @@ LMS-backend/
 ├── package.json
 ├── tsconfig.json
 └── README.md
-
+```
 
 ---
 
@@ -310,8 +309,8 @@ This project is licensed under the ISC License.
 
 **Dan A. Tshisungu**
 
-GitHub: @[your-github](https://github.com/WeOnlyLiveOnce13)
-LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/dan-tshisungu-5772a3168/)
+GitHub: [My github Profile](https://github.com/WeOnlyLiveOnce13)
+LinkedIn: [Dan's LinkedIn](https://www.linkedin.com/in/dan-tshisungu-5772a3168/)
 
 
 # 🙏 Acknowledgments
