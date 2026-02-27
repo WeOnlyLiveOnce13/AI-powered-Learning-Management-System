@@ -9,7 +9,7 @@ A robust Learning Management System (LMS) backend built with **Fastify**, **Type
 - [LMS Backend](#lms-backend)
   - [📋 Table of Contents](#-table-of-contents)
   - [✨ Features](#-features)
-    - [Implemented ✅](#implemented-)
+    - [Implemented ](#implemented-)
     - [Planned 🚧](#planned-)
   - [🏗 Architecture](#-architecture)
     - [System Overview](#system-overview)
@@ -27,7 +27,7 @@ A robust Learning Management System (LMS) backend built with **Fastify**, **Type
 
 ## ✨ Features
 
-### Implemented ✅
+### Implemented 
 
 | Feature | Description |
 |---------|-------------|
